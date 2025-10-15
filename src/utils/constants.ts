@@ -1,9 +1,9 @@
 // Color mapping for different block types
 export const BLOCK_COLORS: Record<string, { border: string; background: string; label: string }> = {
   'Header': {
-    border: '#7c3aed',
-    background: 'rgba(124, 58, 237, 0.12)',
-    label: '#a78bfa',
+    border: '#4f46e5',
+    background: 'rgba(79, 70, 229, 0.12)',
+    label: '#818cf8',
   },
   'Title': {
     border: '#dc2626',
@@ -26,14 +26,14 @@ export const BLOCK_COLORS: Record<string, { border: string; background: string; 
     label: '#fdba74',
   },
   'List Item': {
-    border: '#0284c7',
-    background: 'rgba(2, 132, 199, 0.12)',
-    label: '#7dd3fc',
+    border: '#7c3aed',
+    background: 'rgba(124, 58, 237, 0.12)',
+    label: '#a78bfa',
   },
   'Table': {
-    border: '#9333ea',
-    background: 'rgba(147, 51, 234, 0.12)',
-    label: '#c084fc',
+    border: '#db2777',
+    background: 'rgba(219, 39, 119, 0.12)',
+    label: '#f9a8d4',
   },
   'Footer': {
     border: '#64748b',
@@ -41,9 +41,9 @@ export const BLOCK_COLORS: Record<string, { border: string; background: string; 
     label: '#cbd5e1',
   },
   'Page Number': {
-    border: '#475569',
-    background: 'rgba(71, 85, 105, 0.12)',
-    label: '#94a3b8',
+    border: '#84cc16',
+    background: 'rgba(132, 204, 22, 0.12)',
+    label: '#bef264',
   },
 };
 
