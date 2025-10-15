@@ -2,12 +2,6 @@ import { useMemo, useState, useEffect } from 'react'
 import PdfWithOverlay, { type ExtractResult } from './components/PdfWithOverlay'
 import BlockTypeSelector from './components/BlockTypeSelector'
 import './App.css'
-import { pdfjs } from 'react-pdf';
-
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url,
-).toString();
 
 function App() {
   const [file, setFile] = useState<string>("")
