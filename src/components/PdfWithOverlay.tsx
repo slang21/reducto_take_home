@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { Document, Page } from 'react-pdf';
 
 import { pdfjs } from 'react-pdf';
+import Block from './Block';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
@@ -75,25 +76,18 @@ export default function PdfWithOverlay({
               />
               <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
                 {boxes.map(b => (
-                  <div
+                  <Block
                     key={b.id}
+                    id={b.id}
+                    left={b.left}
+                    top={b.top}
+                    width={b.width}
+                    height={b.height}
+                    type={b.type}
+                    content={b.content}
+                    isActive={activeId === b.id}
                     onMouseEnter={() => setActiveId(b.id)}
                     onMouseLeave={() => setActiveId(a => (a === b.id ? null : a))}
-                    title={`${b.type}${b.content ? `: ${truncate(b.content)}` : ''}`}
-                    style={{
-                      position: 'absolute',
-                      left: `${b.left * 100}%`,
-                      top: `${b.top * 100}%`,
-                      width: `${b.width * 100}%`,
-                      height: `${b.height * 100}%`,
-                      border: activeId === b.id ? '2px solid #2563eb' : '2px solid #f59e0b',
-                      background: activeId === b.id ? 'rgba(37,99,235,0.15)' : 'rgba(245,158,11,0.12)',
-                      borderRadius: 4,
-                      transition: 'border-color 120ms, background 120ms, box-shadow 120ms',
-                      boxShadow: activeId === b.id ? '0 0 0 2px rgba(37,99,235,0.35)' : 'none',
-                      cursor: 'pointer',
-                      pointerEvents: 'auto',
-                    }}
                   />
                 ))}
               </div>
@@ -103,9 +97,4 @@ export default function PdfWithOverlay({
       </Document>
     </div>
   );
-}
-
-function truncate(s?: string, n = 120) {
-  if (!s) return '';
-  return s.length > n ? s.slice(0, n - 1) + '…' : s;
 }
