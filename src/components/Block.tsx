@@ -1,20 +1,26 @@
-type BlockProps = {
+export type BlockProps = {
   id: number;
   left: number;
   top: number;
   width: number;
   height: number;
   type: string;
-  content?: string;
   isActive: boolean;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
 };
 
-function truncate(s?: string, n = 120) {
-  if (!s) return '';
-  return s.length > n ? s.slice(0, n - 1) + '…' : s;
-}
+export type BlockType = {
+    type: string;
+    bbox: {
+      left: number;
+      top: number;
+      width: number;
+      height: number;
+      page: number;
+    };
+    content?: string;
+  };
 
 export default function Block({
   left,
@@ -22,7 +28,6 @@ export default function Block({
   width,
   height,
   type,
-  content,
   isActive,
   onMouseEnter,
   onMouseLeave,
@@ -31,7 +36,7 @@ export default function Block({
     <div
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      title={`${type}${content ? `: ${truncate(content)}` : ''}`}
+      title={type}
       style={{
         position: 'absolute',
         left: `${left * 100}%`,
